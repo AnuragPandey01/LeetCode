@@ -31,14 +31,6 @@ class BinaryTree{
             return;
         }
 
-        if(root.left == null){
-            ans.add(root.val);
-            if(root.right != null){
-                inorder(root.right);
-            }
-            return;
-        }
-
         inorder(root.left);
         ans.add(root.val);
         inorder(root.right);
