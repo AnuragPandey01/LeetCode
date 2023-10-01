@@ -11,17 +11,11 @@ class Solution {
         }
 
         int max = arr[n-1];
+        int ans = 0;
         for (int i = n-1; i > 0; i--) {
             max =Math.max(max,arr[i]);
-            suffmax[i] = max;
+            ans =  Math.max(ans,max-premin[i]);
         }
-
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            ans = Math.max(ans,suffmax[i]-premin[i]);
-        }
-
-        System.out.println(ans);
         return ans;
     }
 }
