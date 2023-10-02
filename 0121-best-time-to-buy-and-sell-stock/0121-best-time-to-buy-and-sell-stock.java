@@ -1,21 +1,17 @@
 class Solution {
-            public int maxProfit(int[] arr) {
+
+    public int maxProfit(int[] arr) {
+
         int n = arr.length;
-        int[] premin = new int[n];
-        int[] suffmax = new int[n];
+        int prefixMin = Integer.MAX_VALUE;
+        int maxProfit = 0;
 
-        int min = arr[0];
         for (int i = 0; i < n; i++) {
-            min = Math.min(min,arr[i]);
-            premin[i] = min;
+            
+            maxProfit = Math.max(maxProfit,arr[i]-prefixMin);
+            prefixMin = Math.min(prefixMin,arr[i]);
         }
 
-        int max = arr[n-1];
-        int ans = 0;
-        for (int i = n-1; i > 0; i--) {
-            max =Math.max(max,arr[i]);
-            ans =  Math.max(ans,max-premin[i]);
-        }
-        return ans;
+        return maxProfit;
     }
 }
