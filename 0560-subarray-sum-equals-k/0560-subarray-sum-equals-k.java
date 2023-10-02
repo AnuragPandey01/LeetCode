@@ -7,9 +7,9 @@ class Solution {
         int sum = 0;
         HashMap<Integer,Integer> map = new HashMap<>();
 
-        for(int i=0;i<n;i++){
+        for(int num: nums){
 
-            sum += nums[i];
+            sum += num;
 
             count += map.getOrDefault(sum-k,0);
 
