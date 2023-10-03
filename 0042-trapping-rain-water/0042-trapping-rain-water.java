@@ -1,52 +1,29 @@
 class Solution {
-    public int trap(int[] nums) {
-
-        int n = nums.length;
-        int i = 0;
+    public int trap(int[] height) {
+        int n = height.length;
+        int left = 0, right = n - 1;
+        int leftMax = 0, rightMax = 0;
         int ans = 0;
-        while(i<n){
-            int curr = nums[i];
 
-            if(curr == 0){
-                i++;
-                continue;
-            }
-
-            int j = i+1;
-            int sum = 0;
-            boolean flag = false;
-            int flagSum = 0;
-            int flagIndex = i+1;
-            int flagNum = 0;
-
-            while(j<n){
-                if(nums[j] >= curr){
-                    flag = true;
-                    break;
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] > leftMax) {
+                    leftMax = height[left];
+                } else {
+                    ans += leftMax - height[left];
                 }
-                if(flagNum<nums[j]){
-                    flagNum = nums[j];
-                    flagSum = sum;
-                    flagIndex = j;
+                left++;
+            } else {
+                if (height[right] > rightMax) {
+                    rightMax = height[right];
+                } else {
+                    ans += rightMax - height[right];
                 }
-                sum += nums[j];
-                j++;
-            }
-            if(flag){
-                ans += ((j-i-1)*curr)-sum;
-            }else{
-                ans += ((flagIndex-i-1)*Math.min(curr,flagNum))-flagSum;
-            }
-
-            if(!flag && flagIndex>i+1){
-                i = flagIndex;
-            }else if(j == n){
-                i++;
-            }else{
-                i = j;
+                right--;
             }
         }
 
         return ans;
     }
+
 }
