@@ -10,8 +10,8 @@ class Solution {
         
         
         if(flag){
-            ans[0] = floor;
-            ans[1] = ciel;
+            ans[0] = floor+1;
+            ans[1] = ciel-1;
         }else{
             ans[0] = -1;
             ans[1] = -1;
@@ -41,7 +41,7 @@ class Solution {
             }
         }
 
-        return ans-1;
+        return ans;
     }
 
     private int find_floor(int[] nums,int target){
@@ -64,7 +64,7 @@ class Solution {
                 high =  mid-1;
             }
         }
-        return ans+1;
+        return ans;
     }
 
 
