@@ -64,10 +64,6 @@ class Solution {
                 high =  mid-1;
             }
         }
-
-        if(ans == -1){
-            return 0;
-        }
         return ans+1;
     }
 
