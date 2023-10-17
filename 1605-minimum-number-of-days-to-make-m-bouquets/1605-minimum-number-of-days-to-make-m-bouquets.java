@@ -1,9 +1,10 @@
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
-        int n = bloomDay.length;
-        int low = 1;
-        int high = getMax(bloomDay);
-        int ans =-1;
+        
+        int[] range = getMinMax(bloomDay);
+        int low = range[0];
+        int high = range[1];
+        int ans = -1;
 
         while(low<=high){
             int mid = low + (high-low)/2;
@@ -18,12 +19,14 @@ class Solution {
 
     }
 
-    public static int getMax(int[] arr){
+    public static int[] getMinMax(int[] arr){
         int max = arr[0];
+        int min = arr[0];
         for(int num: arr){
             max = Math.max(max,num);
+            min = Math.min(min,num);
         }
-        return max;
+        return new int[]{min,max};
     }
 
     private static boolean canMakeMBouquets(int wait,int m,int k,int[] bloomDay){
@@ -32,8 +35,6 @@ class Solution {
         int streak = 0;
 
         for(int num: bloomDay){
-
-            
             if(num<=wait){
                 streak++;
             }else{
