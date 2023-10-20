@@ -1,5 +1,6 @@
 class Solution {
     public List<String> findRepeatedDnaSequences(String s) {
+
         Set<String> ans = new HashSet<>();
         Set<String> set = new HashSet<>();
 
@@ -18,6 +19,6 @@ class Solution {
             set.add(currStr.toString());
             high++;
         }
-        return ans.stream().toList();
+        return new ArrayList<>(ans);
     }
 }
