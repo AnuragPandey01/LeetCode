@@ -1,10 +1,12 @@
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
 
+        /* 
+         * Intuition: array having the closest elements will have minimum sum of absolute difference
+         */
         int low = 0;
         int high = 0;
-        int minLow = low;
-        int minHigh = high;
+        int ansStart = low;
         int currSum = 0;
         int ans = Integer.MAX_VALUE;
 
@@ -17,14 +19,13 @@ class Solution {
             }
             if(high-low+1 == k && ans > currSum){
                 ans = currSum;
-                minLow = low;
-                minHigh = high;
+                ansStart = low;
             }
             high++;
         }
 
         ArrayList<Integer> list = new ArrayList<>();
-        for(int i = minLow; i<=minHigh;i++){
+        for(int i = ansStart; i<ansStart+k;i++){
             list.add(arr[i]);
         }
         return list;
